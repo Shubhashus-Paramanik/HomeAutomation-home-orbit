@@ -12,6 +12,8 @@ import Controllers from "./pages/Controllers";
 import Settings from "./pages/Settings";
 import Schedules from "./pages/Schedules";
 
+import HomePage from "./pages/HomePage";
+
 import ProtectedRoute from "./components/ProtectedRoute";
 import AppLayout from "./components/AppLayout";
 
@@ -20,6 +22,7 @@ export default function App() {
     <Routes>
 
       {/* Public routes */}
+      <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
@@ -27,10 +30,10 @@ export default function App() {
       <Route element={<ProtectedRoute />}>
         <Route element={<AppLayout />}>
 
-          <Route
+          {/* <Route
             path="/"
             element={<Navigate to="/dashboard" replace />}
-          />
+          /> */}
 
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/homes" element={<Homes />} />
@@ -43,9 +46,15 @@ export default function App() {
       </Route>
 
       {/* Unknown route */}
-      <Route
+      {/* <Route
         path="*"
         element={<Navigate to="/dashboard" replace />}
+      /> */}
+      
+       {/* Unknown routes */}
+      <Route
+        path="*"
+        element={<Navigate to="/" replace />}
       />
 
     </Routes>
